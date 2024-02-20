@@ -25,10 +25,10 @@ public class CartPage extends AbstractComponent {
         Boolean match = goodsInCart.stream().anyMatch(p->p.findElement(By.tagName("h3")).getText().equalsIgnoreCase(productName));
        return match;
     }
-    public CheckOutPage goToOrderPage()
+    public CheckoutPage goToOrderPage()
     {
     checkOutButton.click();
-    CheckOutPage orderPage = new CheckOutPage(driver);
+    CheckoutPage orderPage = new CheckoutPage(driver);
     return orderPage;
 
     }

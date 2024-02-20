@@ -9,19 +9,19 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class CheckOutPage extends AbstractComponent {
+public class CheckoutPage extends AbstractComponent {
     WebDriver driver;
-    public CheckOutPage(WebDriver driver){
+    public CheckoutPage(WebDriver driver){
         super(driver);
         this.driver=driver;
         PageFactory.initElements(driver, this);
     }
     @FindBy(css = "input[placeholder='Select Country']")
-    WebElement selectCountry;
+    private WebElement selectCountry;
     @FindBy(css = "button[type='button']")
-    List<WebElement> countries;
+    private List<WebElement> countries;
     @FindBy(css = "a.btnn.action__submit.ng-star-inserted")
-    WebElement placeOrder;
+    private WebElement placeOrder;
 
     public void placeOrder (String type, String country)
     {

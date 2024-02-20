@@ -1,21 +1,23 @@
 package Atola.tests;
 
 import Atola.testComponents.BaseTest;
+import Atola.testComponents.Retry;
 import Atola.tests.PageObjects.CartPage;
 import Atola.tests.PageObjects.ProductCatalogue;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 import java.util.List;
 
 public class ErrorValidations extends BaseTest {
-    @Test(groups = {"ErrorHandling"})
-    public void LoginErrorValidation() throws IOException {
+    @Test(groups = {"ErrorHandling"},retryAnalyzer = Retry.class)
+    public void LoginErrorValidation() throws IOException, InterruptedException {
 
-        ProductCatalogue productCatalogue = landingPage.loginApp("terk123@ukr.net", "ZZZzzz111");
-        Assert.assertTrue(landingPage.getErrorMessage().equalsIgnoreCase("Incorrect email or password."));
+        landingPage.loginApp("terk123@ukr.net", "ZZZzzz111");
+        Assert.assertEquals("Incorrect email or password.", landingPage.getErrorMessage());
 
     }
     @Test
